@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Imaginatively Named Blog</title>
+    <atom:link href="http://jakestevenson.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://jakestevenson.github.io</link>
+    <description>Notes about software development</description>
+    <pubDate>Wed, 18 Sep 2013 19:00:00 -0500</pubDate>
+    <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
+    <language>en</language>
+    <item>
+      <title>First Post</title>
+      <link>http://jakestevenson.github.io/articles/first-post/</link>
+      <pubDate>Wed, 18 Sep 2013 19:00:00 -0500</pubDate>
+      <guid isPermaLink="true">http://jakestevenson.github.io/articles/first-post/</guid>
+      <author></author>
+      <description>&lt;p&gt;Time to start a new blog.  I&amp;#39;m going to leave my old one up at &lt;a href=&quot;http://jakeastevenson.blogspot.com/&quot;&gt;http://jakeastevenson.blogspot.com/&lt;/a&gt;, but it is ancient and I‘m interested in learning about new blogging engines and starting fresh.  Here’s where I hope to record things I&amp;#39;ve learned and thoughts I have about my career development.&lt;/p&gt;
+</description>
+    </item>
+  </channel>
+</rss>
