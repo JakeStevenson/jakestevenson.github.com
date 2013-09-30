@@ -5,9 +5,59 @@
     <atom:link href="http://jakestevenson.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://jakestevenson.github.io</link>
     <description>Notes about software development</description>
-    <pubDate>Wed, 18 Sep 2013 19:00:00 -0500</pubDate>
+    <pubDate>Thu, 26 Sep 2013 19:00:00 -0500</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Resolving Arrays In TinyIOC</title>
+      <link>http://jakestevenson.github.io/articles/27-09-2013-ResolvingArraysInTinyIOC/</link>
+      <pubDate>Thu, 26 Sep 2013 19:00:00 -0500</pubDate>
+      <guid isPermaLink="true">http://jakestevenson.github.io/articles/27-09-2013-ResolvingArraysInTinyIOC/</guid>
+      <author></author>
+      <description>&lt;p&gt;Well if I&amp;#39;m going to be writing about software development, I better actually get to some technical stuff.&lt;/p&gt;
+&lt;p&gt;We‘ve been using NancyFX to create a pretty quick and easy API wrapper around a lot of our business logic.  By default, NancyFX uses TinyIOC as an IOC contaner, and it’s pretty nice.  It&amp;#39;s very simple and it does basic auto-registration of all the classes inside.  &lt;/p&gt;
+&lt;p&gt;Most of our products use Windsor as the container. I‘d considered doing the work to make Windsor the container in our NancyFX API project, but decided I shouldn’t have to.  It seems the code should be container-agnostic and it shouldn&amp;#39;t really matter what container we use for a particular output.  And for 95% of the stuff I was right.&lt;/p&gt;
+&lt;p&gt;But we did hit a snag.  Some of our services depended on resolving an array of dependencies.  Something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class SomeService
+ {
+   private ISomeInterface _dependencies{get;set;}
+   public SomeService(ISomeInterface[] dependencies)
+   {
+     _depencencies = dependencies; 
+   }
+
+   public void DoSomething()
+   {
+     //Loop through the dependencies doing something with each of them
+   }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Windsor has a subresolver that allows this pattern, resolving arrays instead of just single classes.  Just do &lt;code&gt;container.Kernel.Resolver.AddSubResolver(new ArrayResolver(container.Kernel)&lt;/code&gt; (what a mouthful).  But TinyIOC didn&amp;#39;t do this.  &lt;/p&gt;
+&lt;p&gt;But TinyIOC does let you register factories as anonymous functions.  This was key to letting it resolve the array.  I can&amp;#39;t do it automatically for any array of types, but I was able to do a simple one for this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;container.Register&amp;lt;ISomeInterface[]&amp;gt;((c, p) =&amp;gt;
+{
+    //Assuming all implementations come from the same assembly as the interface itself
+    var allOfSomeInterface  = (from t in Assembly.GetAssembly(typeof (ISomeInterface)).GetTypes()
+        where t.GetInterfaces().Contains(typeof (ISomeInterface))
+        select t).ToArray();
+    return allOfSomeInterface.Select(implementation =&amp;gt; (ISomeInterface) container.Resolve(implementation)).ToArray();
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Kinda ugly, but also seems to make sense to me.  If I want to resolve all types matching the interface, I first use reflection to discover those types, then resolve each of those implementations from the container and return an array of them.&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>Changes</title>
+      <link>http://jakestevenson.github.io/articles/changes/</link>
+      <pubDate>Thu, 19 Sep 2013 19:00:00 -0500</pubDate>
+      <guid isPermaLink="true">http://jakestevenson.github.io/articles/changes/</guid>
+      <author></author>
+      <description>&lt;p&gt;Of course there‘s a reason I’m starting up a new blog — I‘m making a change in my career and I’d like to start it off on the right foot.  &lt;/p&gt;
+&lt;p&gt;I‘ve always been averse to change.  It makes my wife crazy because I resist her re-arranging the furniture.  I resist throwing out an old pair of sneakers and buying new ones.  Moving? I’ve told her I plan to die in our current house.&lt;/p&gt;
+&lt;p&gt;So making a career change is especially nerve-wracking.  I do not like it.  It usually takes quite a lot to “push” me out the door at a job, like not paying me (not the case this time) for a few months.  I grow attached to my projects.  I grow fond of my co-workers.  I get very comfortable in my little corner of the world.&lt;/p&gt;
+&lt;p&gt;And I get stagnant.  I might get a bit TOO comfortable.  I start to turn a blind eye to some of the dirtier code corners in the project.  &lt;/p&gt;
+&lt;p&gt;So it‘s time for a forced change.  A forced change that will lead to more changes.  I’m going back into the consulting field, where you don‘t have as much opportunity to stagnate.  I’m excited about throwing myself in the deep end of new projects again.  And learning and helping and building upon that when I go to the next project.  I‘ve done it before and know it will be challenging— and I think those challenges are exactly what I need today.  That doesn’t stop my heart from skipping a beat every time I start thinking about the changes coming up.&lt;/p&gt;
+&lt;p&gt;I‘m sorry to leave my previous employer.  They have treated me exceedingly well and given me great freedom.  I hate it that my leaving will have even the slightest impact on them.  But it’s a choice I have to make eventually, and I can hope it will be good for both of us in the long run. &lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>First Post</title>
       <link>http://jakestevenson.github.io/articles/first-post/</link>
