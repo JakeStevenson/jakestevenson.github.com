@@ -42,17 +42,13 @@
 -->
 <div class="container">
   <div class="starter-template">
-    <h1> Imaginatively Named Blog
+    <h1> Cloud Development Machine In Azure - Imaginatively Named Blog
     </h1>
     <p class="lead">Notes about software development
     </p>
   </div>
   <div class="bs-example">
-    <article class="article intro">
-      <header>
-        <p class="date"><span>02. October 2013</span></p>
-        <h2><a href="/articles/2013-10-02-CloudDevMachine/">Cloud Development Machine In Azure</a></h2>
-      </header>
+    <article class="article">
       <section class="content"><p>I need a new development laptop.  I prefer Macbook Pros.  But it&#39;s Oct 2<span class="ord">nd</span> and the highly likely rumor is that Apple will announce the new version of the <span class="caps">MBP</span> on October 15<span class="ord">th</span>. I will be VERY unhappy if the new line comes out so soon after such a major purchase, so I need to hold off and make due with something else for a&nbsp;while.</p>
 <p>I have a nearly 10 year old 15&quot; dell laptop sitting on a shelf in my office.  It has a 2G of <span class="caps">RAM</span> (maximum, absolutely cannot be ugraded) and god knows how old and slow of a CPU.  It currently runs Ubuntu VERY SLOWLY.  I can&#39;t imagine trying to run VS.NET 2012 on it without feeling a lot of pain.  But it IS able to run an RDP client, and that can open up all sorts of possibilities for&nbsp;me.</p>
 <p>I decided I&#39;ll run my development machine <strong><span class="caps">IN</span> THE CLOUD</strong> for a couple of weeks while I wait.  Then I can just <span class="caps">RDP</span> to it from any terrible machine (even my ipad!) and get some work done!  Doesn&#39;t matter where I am as long as I have internet access, and I <em>always</em> have internet access&nbsp;dammit.</p>
@@ -65,58 +61,7 @@
 <p>After about 10 minutes it‘s there, ready for me. I’m armed with admin credentials and I&#39;m not afraid to use them.  Install Chrome, cygwin, github for windows, node.js.  Everything goes nice ans fast.  This is&nbsp;great!</p>
 <p>So that‘s my plan for a bit, until I’m sure my laptop purchase won&#39;t immediately become obsolete.  Development <strong><span class="caps">IN</span> THE CLOUD</strong> free for a&nbsp;month.    </p>
 <p><img src="/articles/2013-10-02-CloudDevMachine/DesktopReady.jpeg" alt="Desktop Ready" title="Desktop Ready"></p>
-
-      </section>
-    </article>
-    <article class="article intro">
-      <header>
-        <p class="date"><span>27. September 2013</span></p>
-        <h2><a href="/articles/2013-09-27-ResolvingArraysInTinyIOC/">Resolving Arrays In TinyIOC</a></h2>
-      </header>
-      <section class="content"><p>Well if I&#39;m going to be writing about software development, I better actually get to some technical&nbsp;stuff.</p>
-<p>We‘ve been using NancyFX to create a pretty quick and easy <span class="caps">API</span> wrapper around a lot of our business logic.  By default, NancyFX uses TinyIOC as an IOC contaner, and it’s pretty nice.  It&#39;s very simple and it does basic auto-registration of all the classes&nbsp;inside.  </p>
-<p>Most of our products use Windsor as the container. I‘d considered doing the work to make Windsor the container in our NancyFX <span class="caps">API</span> project, but decided I shouldn’t have to.  It seems the code should be container-agnostic and it shouldn&#39;t really matter what container we use for a particular output.  And for 95% of the stuff I was&nbsp;right.</p>
-<p>But we did hit a snag.  Some of our services depended on resolving an array of dependencies.  Something like&nbsp;this:</p>
-<pre><code>public class SomeService
- {
-   private ISomeInterface _dependencies{get;set;}
-   public SomeService(ISomeInterface[] dependencies)
-   {
-     _depencencies = dependencies; 
-   }
-
-   public void DoSomething()
-   {
-     //Loop through the dependencies doing something with each of them
-   }
-}</code></pre>
-<p>Windsor has a subresolver that allows this pattern, resolving arrays instead of just single classes.  Just do <code>container.Kernel.Resolver.AddSubResolver(new ArrayResolver(container.Kernel)</code> (what a mouthful).  But TinyIOC didn&#39;t do&nbsp;this.  </p>
-<p>But TinyIOC does let you register factories as anonymous functions.  This was key to letting it resolve the array.  I can&#39;t do it automatically for any array of types, but I was able to do a simple one for&nbsp;this:</p>
-<pre><code>container.Register&lt;ISomeInterface[]&gt;((c, p) =&gt;
-{
-    //Assuming all implementations come from the same assembly as the interface itself
-    var allOfSomeInterface  = (from t in Assembly.GetAssembly(typeof (ISomeInterface)).GetTypes()
-        where t.GetInterfaces().Contains(typeof (ISomeInterface))
-        select t).ToArray();
-    return allOfSomeInterface.Select(implementation =&gt; (ISomeInterface) container.Resolve(implementation)).ToArray();
-});</code></pre>
-<p>Kinda ugly, but also seems to make sense to me.  If I want to resolve all types matching the interface, I first use reflection to discover those types, then resolve each of those implementations from the container and return an array of&nbsp;them.</p>
-
-      </section>
-    </article>
-    <article class="article intro">
-      <header>
-        <p class="date"><span>20. September 2013</span></p>
-        <h2><a href="/articles/changes/">Changes</a></h2>
-      </header>
-      <section class="content"><p>Of course there‘s a reason I’m starting up a new blog — I‘m making a change in my career and I’d like to start it off on the right&nbsp;foot.  </p>
-<p>I‘ve always been averse to change.  It makes my wife crazy because I resist her re-arranging the furniture.  I resist throwing out an old pair of sneakers and buying new ones.  Moving? I’ve told her I plan to die in our current&nbsp;house.</p>
-<p>So making a career change is especially nerve-wracking.  I do not like it.  It usually takes quite a lot to “push” me out the door at a job, like not paying me (not the case this time) for a few months.  I grow attached to my projects.  I grow fond of my co-workers.  I get very comfortable in my little corner of the&nbsp;world.</p>
-<p>And I get stagnant.  I might get a bit <span class="caps">TOO</span> comfortable.  I start to turn a blind eye to some of the dirtier code corners in the&nbsp;project.  </p>
-<p>So it‘s time for a forced change.  A forced change that will lead to more changes.  I’m going back into the consulting field, where you don‘t have as much opportunity to stagnate.  I’m excited about throwing myself in the deep end of new projects again.  And learning and helping and building upon that when I go to the next project.  I‘ve done it before and know it will be challenging— and I think those challenges are exactly what I need today.  That doesn’t stop my heart from skipping a beat every time I start thinking about the changes coming&nbsp;up.</p>
-<p>I‘m sorry to leave my previous employer.  They have treated me exceedingly well and given me great freedom.  I hate it that my leaving will have even the slightest impact on them.  But it’s a choice I have to make eventually, and I can hope it will be good for both of us in the long&nbsp;run. </p>
-
-      </section>
+</section>
     </article>
   </div>
 </div>
