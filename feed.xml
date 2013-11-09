@@ -14,17 +14,17 @@
       <pubDate>Tue, 01 Oct 2013 19:00:00 -0500</pubDate>
       <guid isPermaLink="true">http://jakestevenson.github.io/articles/2013-10-02-CloudDevMachine/</guid>
       <author></author>
-      <description>&lt;p&gt;I need a new development laptop.  I prefer Macbook Pros.  But it&amp;#39;s Oct 2nd and the highly likely rumor is that Apple will announce the new version of the MBP on October 15th. I will be VERY unhappy if the new line comes out so soon after such a major purchase, so I need to hold off and make due with something else for a while.&lt;/p&gt;
-&lt;p&gt;I have a nearly 10 year old 15&amp;quot; dell laptop sitting on a shelf in my office.  It has a 2G of RAM (maximum, absolutely cannot be ugraded) and god knows how old and slow of a CPU.  It currently runs Ubuntu VERY SLOWLY.  I can&amp;#39;t imagine trying to run VS.NET 2012 on it without feeling a lot of pain.  But it IS able to run an RDP client, and that can open up all sorts of possibilities for me.&lt;/p&gt;
-&lt;p&gt;I decided I&amp;#39;ll run my development machine &lt;strong&gt;IN THE CLOUD&lt;/strong&gt; for a couple of weeks while I wait.  Then I can just RDP to it from any terrible machine (even my ipad!) and get some work done!  Doesn&amp;#39;t matter where I am as long as I have internet access, and I &lt;em&gt;always&lt;/em&gt; have internet access dammit.&lt;/p&gt;
-&lt;p&gt;So first, picking a cloud provider to run it.  I‘ve used Amazon EC2 plenty in the past.  It’s pretty easy to deal with.  I checked it out.  To run Windows on a decently powered “Large” VM it‘ll cost $.364 an hour.  They’ll let you run free VMs for a year, but those are only “Micro” which equals up pretty closely with the hardware on my 10 year old laptop.  I also jumped on that free trial a long time ago and am no longer eligible.  So at $.364 and hour I&amp;#39;d estimate a cost of $58.24 to run it 40 hours for 4 weeks while I get all set up.  Not bad really.  &lt;/p&gt;
-&lt;p&gt;But then I saw Azure has a free trial too.  $200 free for one month.  I hadn&amp;#39;t looked at Azure in a long time, but I keep reading about how much friendlier it has become.  So I decided to give it a shot.&lt;/p&gt;
+      <description>&lt;p&gt;I need a new development laptop.  I prefer Macbook Pros.  But it’s Oct 2nd and the highly likely rumor is that Apple will announce the new version of the MBP on October 15th. I will be VERY unhappy if the new line comes out so soon after such a major purchase, so I need to hold off and make due with something else for a while.&lt;/p&gt;
+&lt;p&gt;I have a nearly 10 year old 15” dell laptop sitting on a shelf in my office.  It has a 2G of RAM (maximum, absolutely cannot be ugraded) and god knows how old and slow of a CPU.  It currently runs Ubuntu VERY SLOWLY.  I can’t imagine trying to run VS.NET 2012 on it without feeling a lot of pain.  But it IS able to run an RDP client, and that can open up all sorts of possibilities for me.&lt;/p&gt;
+&lt;p&gt;I decided I’ll run my development machine &lt;strong&gt;IN THE CLOUD&lt;/strong&gt; for a couple of weeks while I wait.  Then I can just RDP to it from any terrible machine (even my ipad!) and get some work done!  Doesn’t matter where I am as long as I have internet access, and I &lt;em&gt;always&lt;/em&gt; have internet access dammit.&lt;/p&gt;
+&lt;p&gt;So first, picking a cloud provider to run it.  I’ve used Amazon EC2 plenty in the past.  It’s pretty easy to deal with.  I checked it out.  To run Windows on a decently powered “Large” VM it’ll cost $.364 an hour.  They’ll let you run free VMs for a year, but those are only “Micro” which equals up pretty closely with the hardware on my 10 year old laptop.  I also jumped on that free trial a long time ago and am no longer eligible.  So at $.364 and hour I’d estimate a cost of $58.24 to run it 40 hours for 4 weeks while I get all set up.  Not bad really.  &lt;/p&gt;
+&lt;p&gt;But then I saw Azure has a free trial too.  $200 free for one month.  I hadn’t looked at Azure in a long time, but I keep reading about how much friendlier it has become.  So I decided to give it a shot.&lt;/p&gt;
 &lt;p&gt;Amazingly easy to set up.  Just entered my old hotmail/live/outlook.com/whatever you want to call it account name and password.  Confirmed the account and entered billing information (for when I forget to turn this thing off at the end of the month and they can hit me).  Within 5 minutes I was looking at the “portal” and ready to create a VM.&lt;/p&gt;
-&lt;p&gt;And that was easy too!  Click “+NEW” on the bottom menu and choose “Virtual Machine”, then “From Gallery.”  They have all sorts of nice options in here, ubuntu servers, suse servers, windows 2012, and… “Visual Studio Ultimate 2013 RC”!  Looks like it‘s a nice windows OS loaded up with VS.NET 2013 and all the fixings already.  Let’s give it a try…&lt;/p&gt;
+&lt;p&gt;And that was easy too!  Click “+NEW” on the bottom menu and choose “Virtual Machine”, then “From Gallery.”  They have all sorts of nice options in here, ubuntu servers, suse servers, windows 2012, and… “Visual Studio Ultimate 2013 RC”!  Looks like it’s a nice windows OS loaded up with VS.NET 2013 and all the fixings already.  Let’s give it a try…&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://jakestevenson.github.io/articles/2013-10-02-CloudDevMachine/ChooseVM.jpeg&quot; alt=&quot;Choose your VM&quot; title=&quot;Choose your VM&quot;&gt;&lt;/p&gt;
-&lt;p&gt;After that you enter a simple name and VM size.  I picked “Large” because it&amp;#39;s 4 cores with 7G of memory.  Seems plenty enough for coding.  After that you set up how it will be accessed (RDP enabled by default) and some other simple stuff I forget and then it spins it up.&lt;/p&gt;
-&lt;p&gt;After about 10 minutes it‘s there, ready for me. I’m armed with admin credentials and I&amp;#39;m not afraid to use them.  Install Chrome, cygwin, github for windows, node.js.  Everything goes nice and fast.  This is great!&lt;/p&gt;
-&lt;p&gt;So that‘s my plan for a bit, until I’m sure my laptop purchase won&amp;#39;t immediately become obsolete.  Development &lt;strong&gt;IN THE CLOUD&lt;/strong&gt; free for a month.    &lt;/p&gt;
+&lt;p&gt;After that you enter a simple name and VM size.  I picked “Large” because it’s 4 cores with 7G of memory.  Seems plenty enough for coding.  After that you set up how it will be accessed (RDP enabled by default) and some other simple stuff I forget and then it spins it up.&lt;/p&gt;
+&lt;p&gt;After about 10 minutes it’s there, ready for me. I’m armed with admin credentials and I’m not afraid to use them.  Install Chrome, cygwin, github for windows, node.js.  Everything goes nice and fast.  This is great!&lt;/p&gt;
+&lt;p&gt;So that’s my plan for a bit, until I’m sure my laptop purchase won’t immediately become obsolete.  Development &lt;strong&gt;IN THE CLOUD&lt;/strong&gt; free for a month.    &lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://jakestevenson.github.io/articles/2013-10-02-CloudDevMachine/DesktopReady.jpeg&quot; alt=&quot;Desktop Ready&quot; title=&quot;Desktop Ready&quot;&gt;&lt;/p&gt;
 </description>
     </item>
@@ -34,9 +34,9 @@
       <pubDate>Thu, 26 Sep 2013 19:00:00 -0500</pubDate>
       <guid isPermaLink="true">http://jakestevenson.github.io/articles/2013-09-27-ResolvingArraysInTinyIOC/</guid>
       <author></author>
-      <description>&lt;p&gt;Well if I&amp;#39;m going to be writing about software development, I better actually get to some technical stuff.&lt;/p&gt;
-&lt;p&gt;We‘ve been using NancyFX to create a pretty quick and easy API wrapper around a lot of our business logic.  By default, NancyFX uses TinyIOC as an IOC contaner, and it’s pretty nice.  It&amp;#39;s very simple and it does basic auto-registration of all the classes inside.  &lt;/p&gt;
-&lt;p&gt;Most of our products use Windsor as the container. I‘d considered doing the work to make Windsor the container in our NancyFX API project, but decided I shouldn’t have to.  It seems the code should be container-agnostic and it shouldn&amp;#39;t really matter what container we use for a particular output.  And for 95% of the stuff I was right.&lt;/p&gt;
+      <description>&lt;p&gt;Well if I’m going to be writing about software development, I better actually get to some technical stuff.&lt;/p&gt;
+&lt;p&gt;We’ve been using NancyFX to create a pretty quick and easy API wrapper around a lot of our business logic.  By default, NancyFX uses TinyIOC as an IOC contaner, and it’s pretty nice.  It’s very simple and it does basic auto-registration of all the classes inside.  &lt;/p&gt;
+&lt;p&gt;Most of our products use Windsor as the container. I’d considered doing the work to make Windsor the container in our NancyFX API project, but decided I shouldn’t have to.  It seems the code should be container-agnostic and it shouldn’t really matter what container we use for a particular output.  And for 95% of the stuff I was right.&lt;/p&gt;
 &lt;p&gt;But we did hit a snag.  Some of our services depended on resolving an array of dependencies.  Something like this:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;public class SomeService
  {
@@ -51,8 +51,8 @@
      //Loop through the dependencies doing something with each of them
    }
 }&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Windsor has a subresolver that allows this pattern, resolving arrays instead of just single classes.  Just do &lt;code&gt;container.Kernel.Resolver.AddSubResolver(new ArrayResolver(container.Kernel)&lt;/code&gt; (what a mouthful).  But TinyIOC didn&amp;#39;t do this.  &lt;/p&gt;
-&lt;p&gt;But TinyIOC does let you register factories as anonymous functions.  This was key to letting it resolve the array.  I can&amp;#39;t do it automatically for any array of types, but I was able to do a simple one for this:&lt;/p&gt;
+&lt;p&gt;Windsor has a subresolver that allows this pattern, resolving arrays instead of just single classes.  Just do &lt;code&gt;container.Kernel.Resolver.AddSubResolver(new ArrayResolver(container.Kernel)&lt;/code&gt; (what a mouthful).  But TinyIOC didn’t do this.  &lt;/p&gt;
+&lt;p&gt;But TinyIOC does let you register factories as anonymous functions.  This was key to letting it resolve the array.  I can’t do it automatically for any array of types, but I was able to do a simple one for this:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;container.Register&amp;lt;ISomeInterface[]&amp;gt;((c, p) =&amp;gt;
 {
     //Assuming all implementations come from the same assembly as the interface itself
@@ -70,12 +70,12 @@
       <pubDate>Thu, 19 Sep 2013 19:00:00 -0500</pubDate>
       <guid isPermaLink="true">http://jakestevenson.github.io/articles/changes/</guid>
       <author></author>
-      <description>&lt;p&gt;Of course there‘s a reason I’m starting up a new blog — I‘m making a change in my career and I’d like to start it off on the right foot.  &lt;/p&gt;
-&lt;p&gt;I‘ve always been averse to change.  It makes my wife crazy because I resist her re-arranging the furniture.  I resist throwing out an old pair of sneakers and buying new ones.  Moving? I’ve told her I plan to die in our current house.&lt;/p&gt;
+      <description>&lt;p&gt;Of course there’s a reason I’m starting up a new blog — I’m making a change in my career and I’d like to start it off on the right foot.  &lt;/p&gt;
+&lt;p&gt;I’ve always been averse to change.  It makes my wife crazy because I resist her re-arranging the furniture.  I resist throwing out an old pair of sneakers and buying new ones.  Moving? I’ve told her I plan to die in our current house.&lt;/p&gt;
 &lt;p&gt;So making a career change is especially nerve-wracking.  I do not like it.  It usually takes quite a lot to “push” me out the door at a job, like not paying me (not the case this time) for a few months.  I grow attached to my projects.  I grow fond of my co-workers.  I get very comfortable in my little corner of the world.&lt;/p&gt;
 &lt;p&gt;And I get stagnant.  I might get a bit TOO comfortable.  I start to turn a blind eye to some of the dirtier code corners in the project.  &lt;/p&gt;
-&lt;p&gt;So it‘s time for a forced change.  A forced change that will lead to more changes.  I’m going back into the consulting field, where you don‘t have as much opportunity to stagnate.  I’m excited about throwing myself in the deep end of new projects again.  And learning and helping and building upon that when I go to the next project.  I‘ve done it before and know it will be challenging— and I think those challenges are exactly what I need today.  That doesn’t stop my heart from skipping a beat every time I start thinking about the changes coming up.&lt;/p&gt;
-&lt;p&gt;I‘m sorry to leave my previous employer.  They have treated me exceedingly well and given me great freedom.  I hate it that my leaving will have even the slightest impact on them.  But it’s a choice I have to make eventually, and I can hope it will be good for both of us in the long run. &lt;/p&gt;
+&lt;p&gt;So it’s time for a forced change.  A forced change that will lead to more changes.  I’m going back into the consulting field, where you don’t have as much opportunity to stagnate.  I’m excited about throwing myself in the deep end of new projects again.  And learning and helping and building upon that when I go to the next project.  I’ve done it before and know it will be challenging— and I think those challenges are exactly what I need today.  That doesn’t stop my heart from skipping a beat every time I start thinking about the changes coming up.&lt;/p&gt;
+&lt;p&gt;I’m sorry to leave my previous employer.  They have treated me exceedingly well and given me great freedom.  I hate it that my leaving will have even the slightest impact on them.  But it’s a choice I have to make eventually, and I can hope it will be good for both of us in the long run. &lt;/p&gt;
 </description>
     </item>
     <item>
@@ -84,7 +84,7 @@
       <pubDate>Wed, 18 Sep 2013 19:00:00 -0500</pubDate>
       <guid isPermaLink="true">http://jakestevenson.github.io/articles/first-post/</guid>
       <author></author>
-      <description>&lt;p&gt;Time to start a new blog.  I&amp;#39;m going to leave my old one up at &lt;a href=&quot;http://jakeastevenson.blogspot.com/&quot;&gt;http://jakeastevenson.blogspot.com/&lt;/a&gt;, but it is ancient and I‘m interested in learning about new blogging engines and starting fresh.  Here’s where I hope to record things I&amp;#39;ve learned and thoughts I have about my career development.&lt;/p&gt;
+      <description>&lt;p&gt;Time to start a new blog.  I’m going to leave my old one up at &lt;a href=&quot;http://jakeastevenson.blogspot.com/&quot;&gt;http://jakeastevenson.blogspot.com/&lt;/a&gt;, but it is ancient and I’m interested in learning about new blogging engines and starting fresh.  Here’s where I hope to record things I’ve learned and thoughts I have about my career development.&lt;/p&gt;
 </description>
     </item>
   </channel>
