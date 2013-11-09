@@ -5,13 +5,27 @@
     <atom:link href="http://jakestevenson.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://jakestevenson.github.io</link>
     <description>Notes about software development</description>
-    <pubDate>Tue, 01 Oct 2013 19:00:00 -0500</pubDate>
+    <pubDate>Mon, 04 Nov 2013 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
+      <title>WIndows 8.1 Bootcamp on new Haswell MBP</title>
+      <link>http://jakestevenson.github.io/articles/2013-11-05-BootCampOnHaswell/</link>
+      <pubDate>Mon, 04 Nov 2013 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://jakestevenson.github.io/articles/2013-11-05-BootCampOnHaswell/</guid>
+      <author></author>
+      <description>&lt;p&gt;THe long wait is over and I recieved my shiny new retina MBP with 1TB SSD and the new Haswll chipset.  It feels screaming fast and so far I love it.  And I want to be able to use that speed to play a video game occasionally, which means installing windows in bootcamp so you get all the best performance.  My personal preference is to set up windows in bootcamp first, then have fusion or parallels create a VM that uses the bootcamp partition as it’s disk, so I can use the VM for day-to-day tasks, then reboot to native if I really need the power.&lt;/p&gt;
+&lt;p&gt;Armed with a USB key and a windows 8.1 ISO from MSDN, I proceeded to fire up the bootcamp assistant and start the long process of partitioning and installing windows.  Actually, both partitioning and installing are surprisingly fast with the SSD, but downloading the drivers from apple can take a while.  But then at the end of the windows installation, just before reboot, it throws an error “Windows cannot update the boot partition” and I can’t get any further.&lt;/p&gt;
+&lt;p&gt;Some googling turned up that I was not the only one with the issue.  I found a [&lt;a href=&quot;https://discussions.apple.com/thread/5474320?start=0&amp;amp;tstart=0&quot;&gt;https://discussions.apple.com/thread/5474320?start=0&amp;amp;tstart=0&lt;/a&gt; lengthy thread] on apple’s forums full of people with the same issue exploring various workarounds.  I tried many of them, but finally found success with this:&lt;/p&gt;
+&lt;p&gt;I let bootcamp assistant partition my drive and create a USB boot disk.  It rebooted to go into the windows installer, but I help down the option key and boot into OSX again instead.  Then I had to use Disk Utility to format the bootcamp  partition as ExFAT.&lt;/p&gt;
+&lt;p&gt;Manually rebooted with the option key again and chose the ‘Windows’ (not EFI) boot from the usb drive.  Then in I let had the windows installer reformat the partition again as NTFS.  After that it proceeded to install properly and all went well.&lt;/p&gt;
+&lt;p&gt;Whew!  I’m still unsure why these incantations brought about success, but I thank the perseverant posters on the discussion board (especially maskedferret) for helping me get all set.&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>Cloud Development Machine In Azure</title>
       <link>http://jakestevenson.github.io/articles/2013-10-02-CloudDevMachine/</link>
-      <pubDate>Tue, 01 Oct 2013 19:00:00 -0500</pubDate>
+      <pubDate>Tue, 01 Oct 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://jakestevenson.github.io/articles/2013-10-02-CloudDevMachine/</guid>
       <author></author>
       <description>&lt;p&gt;I need a new development laptop.  I prefer Macbook Pros.  But it’s Oct 2nd and the highly likely rumor is that Apple will announce the new version of the MBP on October 15th. I will be VERY unhappy if the new line comes out so soon after such a major purchase, so I need to hold off and make due with something else for a while.&lt;/p&gt;
@@ -31,7 +45,7 @@
     <item>
       <title>Resolving Arrays In TinyIOC</title>
       <link>http://jakestevenson.github.io/articles/2013-09-27-ResolvingArraysInTinyIOC/</link>
-      <pubDate>Thu, 26 Sep 2013 19:00:00 -0500</pubDate>
+      <pubDate>Thu, 26 Sep 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://jakestevenson.github.io/articles/2013-09-27-ResolvingArraysInTinyIOC/</guid>
       <author></author>
       <description>&lt;p&gt;Well if I’m going to be writing about software development, I better actually get to some technical stuff.&lt;/p&gt;
@@ -67,7 +81,7 @@
     <item>
       <title>Changes</title>
       <link>http://jakestevenson.github.io/articles/changes/</link>
-      <pubDate>Thu, 19 Sep 2013 19:00:00 -0500</pubDate>
+      <pubDate>Thu, 19 Sep 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://jakestevenson.github.io/articles/changes/</guid>
       <author></author>
       <description>&lt;p&gt;Of course there’s a reason I’m starting up a new blog — I’m making a change in my career and I’d like to start it off on the right foot.  &lt;/p&gt;
@@ -81,7 +95,7 @@
     <item>
       <title>First Post</title>
       <link>http://jakestevenson.github.io/articles/first-post/</link>
-      <pubDate>Wed, 18 Sep 2013 19:00:00 -0500</pubDate>
+      <pubDate>Wed, 18 Sep 2013 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://jakestevenson.github.io/articles/first-post/</guid>
       <author></author>
       <description>&lt;p&gt;Time to start a new blog.  I’m going to leave my old one up at &lt;a href=&quot;http://jakeastevenson.blogspot.com/&quot;&gt;http://jakeastevenson.blogspot.com/&lt;/a&gt;, but it is ancient and I’m interested in learning about new blogging engines and starting fresh.  Here’s where I hope to record things I’ve learned and thoughts I have about my career development.&lt;/p&gt;

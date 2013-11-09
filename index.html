@@ -50,6 +50,20 @@
   <div class="bs-example">
     <article class="article intro">
       <header>
+        <p class="date"><span>05. November 2013</span></p>
+        <h2><a href="/articles/2013-11-05-BootCampOnHaswell/">WIndows 8.1 Bootcamp on new Haswell MBP</a></h2>
+      </header>
+      <section class="content"><p>THe long wait is over and I recieved my shiny new retina <span class="caps">MBP</span> with 1TB SSD and the new Haswll chipset.  It feels screaming fast and so far I love it.  And I want to be able to use that speed to play a video game occasionally, which means installing windows in bootcamp so you get all the best performance.  My personal preference is to set up windows in bootcamp first, then have fusion or parallels create a VM that uses the bootcamp partition as it’s disk, so I can use the VM for day-to-day tasks, then reboot to native if I really need the&nbsp;power.</p>
+<p>Armed with a <span class="caps">USB</span> key and a windows 8.1 ISO from MSDN, I proceeded to fire up the bootcamp assistant and start the long process of partitioning and installing windows.  Actually, both partitioning and installing are surprisingly fast with the SSD, but downloading the drivers from apple can take a while.  But then at the end of the windows installation, just before reboot, it throws an error “Windows cannot update the boot partition” and I can’t get any&nbsp;further.</p>
+<p>Some googling turned up that I was not the only one with the issue.  I found a [<a href="https://discussions.apple.com/thread/5474320?start=0&amp;tstart=0">https://discussions.apple.com/thread/5474320?start=0&amp;tstart=0</a> lengthy thread] on apple’s forums full of people with the same issue exploring various workarounds.  I tried many of them, but finally found success with&nbsp;this:</p>
+<p>I let bootcamp assistant partition my drive and create a <span class="caps">USB</span> boot disk.  It rebooted to go into the windows installer, but I help down the option key and boot into OSX again instead.  Then I had to use Disk Utility to format the bootcamp  partition as&nbsp;ExFAT.</p>
+<p>Manually rebooted with the option key again and chose the ‘Windows’ (not <span class="caps">EFI</span>) boot from the usb drive.  Then in I let had the windows installer reformat the partition again as NTFS.  After that it proceeded to install properly and all went&nbsp;well.</p>
+<p>Whew!  I’m still unsure why these incantations brought about success, but I thank the perseverant posters on the discussion board (especially maskedferret) for helping me get all&nbsp;set.</p>
+
+      </section>
+    </article>
+    <article class="article intro">
+      <header>
         <p class="date"><span>02. October 2013</span></p>
         <h2><a href="/articles/2013-10-02-CloudDevMachine/">Cloud Development Machine In Azure</a></h2>
       </header>
@@ -101,20 +115,6 @@
     return allOfSomeInterface.Select(implementation =&gt; (ISomeInterface) container.Resolve(implementation)).ToArray();
 });</code></pre>
 <p>Kinda ugly, but also seems to make sense to me.  If I want to resolve all types matching the interface, I first use reflection to discover those types, then resolve each of those implementations from the container and return an array of&nbsp;them.</p>
-
-      </section>
-    </article>
-    <article class="article intro">
-      <header>
-        <p class="date"><span>20. September 2013</span></p>
-        <h2><a href="/articles/changes/">Changes</a></h2>
-      </header>
-      <section class="content"><p>Of course there’s a reason I’m starting up a new blog — I’m making a change in my career and I’d like to start it off on the right&nbsp;foot.  </p>
-<p>I’ve always been averse to change.  It makes my wife crazy because I resist her re-arranging the furniture.  I resist throwing out an old pair of sneakers and buying new ones.  Moving? I’ve told her I plan to die in our current&nbsp;house.</p>
-<p>So making a career change is especially nerve-wracking.  I do not like it.  It usually takes quite a lot to “push” me out the door at a job, like not paying me (not the case this time) for a few months.  I grow attached to my projects.  I grow fond of my co-workers.  I get very comfortable in my little corner of the&nbsp;world.</p>
-<p>And I get stagnant.  I might get a bit <span class="caps">TOO</span> comfortable.  I start to turn a blind eye to some of the dirtier code corners in the&nbsp;project.  </p>
-<p>So it’s time for a forced change.  A forced change that will lead to more changes.  I’m going back into the consulting field, where you don’t have as much opportunity to stagnate.  I’m excited about throwing myself in the deep end of new projects again.  And learning and helping and building upon that when I go to the next project.  I’ve done it before and know it will be challenging— and I think those challenges are exactly what I need today.  That doesn’t stop my heart from skipping a beat every time I start thinking about the changes coming&nbsp;up.</p>
-<p>I’m sorry to leave my previous employer.  They have treated me exceedingly well and given me great freedom.  I hate it that my leaving will have even the slightest impact on them.  But it’s a choice I have to make eventually, and I can hope it will be good for both of us in the long&nbsp;run. </p>
 
       </section>
     </article>
